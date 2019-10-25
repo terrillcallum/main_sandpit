@@ -1,0 +1,93 @@
+# main_sandpit
+ * and open the template in the editor.
+ */
+package week1;
+
+/**
+ *
+ * @author callum terrill
+ */
+ 
+package week1;
+
+public class RunTravelAgent 
+{
+    public static void main(String[] args)
+    {
+        Holiday h1 = new Holiday("Bermuda", 2, 800);
+        Holiday h2 = new Holiday("Hull", 14, 8);
+        Holiday h3 = new Holiday("Los Angeles", 12, 2100);
+        
+        TravelAgent t1 = new TravelAgent("CheapAsChips", "MA99 1CU");
+        t1.addHoliday(h1);
+        t1.addHoliday(h2);
+        t1.addHoliday(h3);
+        
+        TravelAgent t2 = new TravelAgent("Shoe String Tours", "CO33 2DX");
+        
+        System.out.println(t1);
+        
+        System.out.printf("h3 Duration=%s days & Cost=$%s\n", h3.getDuration(), h3.getCost());
+        System.out.printf("t2 %s %s\n", t2.getName(), t2.getPostcode());
+    }
+}
+
+public class Holiday {
+    String destination;
+    int duration;
+    int cost;
+    
+    public Holiday(String name, int duration, int cost){
+    this.destination = name;
+    this.duration = duration;
+    this.cost = cost;       
+    }
+    public int getDuration(){
+    return duration;
+    }
+    public double getCost(){
+    return cost;
+}
+    public String getDestination(){
+    return destination;
+    }
+     @Override
+    public String toString() {
+          String x = (" destination: " + getDestination() + " cost: " + getCost() + " duration: " + getDuration());
+          return x ;
+    }
+}
+package week1;
+import java.util.ArrayList;
+/**
+ *
+ * @author callum terrill
+ */
+public class TravelAgent {
+String name;
+String postcode;
+ArrayList<String> Holidays;
+
+public TravelAgent(String name,String postcode){
+this.name = name;
+this.postcode = postcode;
+
+this.Holidays = new ArrayList<String>();;
+
+}
+public String getName(){
+      return name;
+
+}
+public String getPostcode(){
+    return postcode;
+}
+public void addHoliday( Holiday x){
+ String y = (" destination: " + x.getDestination() + " cost: " + x.getCost() + " duration: " + x.getDuration());
+ Holidays.add(y);
+}
+@Override
+public String toString() {
+          return getName() + " "+getPostcode()+ "\n" + Holidays.get(0) +"\n" + Holidays.get(1) +"\n" +Holidays.get(2)  ;
+    }
+}
